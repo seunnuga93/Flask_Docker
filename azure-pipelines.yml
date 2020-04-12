@@ -30,5 +30,5 @@ stages:
     - task: Docker@2
       inputs:
         containerRegistry: 'Dockerhubconnection'
-        repository: 'test'
+        repository: $(tag)
         command: 'push'

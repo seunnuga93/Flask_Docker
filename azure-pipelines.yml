@@ -10,7 +10,7 @@ resources:
 
 variables:
   tag: '$(Build.BuildId)'
-  imageName: 'pipeline-flash-image'
+  imageName: 'ebenezermakinde/pipeline-flash-image'
 
 stages:
 - stage: Build

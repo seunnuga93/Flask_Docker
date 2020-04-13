@@ -33,4 +33,3 @@ stages:
         containerRegistry: 'Dockerhubconnection'
         repository: $(imageName)
         command: 'push'
-    - 

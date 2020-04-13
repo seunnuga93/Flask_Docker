@@ -48,14 +48,14 @@ stages:
         deploy:
           steps:
 
-          - task: CopyFiles@2
+          - task: Bash@3
             inputs:
-              SourceFolder: '$(Build.Repository.LocalPath)/app/manifests/*'
-              Contents: '*.yml'
-              TargetFolder: '$(Build.ArtifactStagingDirectory)'
-          - task: KubernetesManifest@0
-            inputs:
-              action: 'deploy'
-              kubernetesServiceConnection: 'flaskenvironment-Flaskdemocluster-default-1586793974934'
-              manifests: '$(Build.ArtifactStagingDirectory)/manifests/*'
+              filePath: 'Agent.BuildDirectory'
+              arguments: 'ls'
+              
+#          - task: KubernetesManifest@0
+#            inputs:
+#              action: 'deploy'
+#              kubernetesServiceConnection: 'flaskenvironment-Flaskdemocluster-default-1586793974934'
+#              manifests: '$(Build.ArtifactStagingDirectory)/manifests/*'
 

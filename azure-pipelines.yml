@@ -54,7 +54,7 @@ stages:
               script: |
                 # Write your commands here
                 
-                ls $(Build.ArtifactStagingDirectory)
+                ls $(Build.SourcesDirectory)
               
 #          - task: KubernetesManifest@0
 #            inputs:

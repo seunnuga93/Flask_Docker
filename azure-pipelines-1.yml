@@ -52,6 +52,6 @@ stages:
               action: 'deploy'
               kubernetesServiceConnection: 'nugakube'
               namespace: 'nugakube'
-              manifests: '$(Pipeline.Workspace)/manifests/*'
+              manifests: 'manifests/*'
 
     

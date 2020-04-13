@@ -50,7 +50,7 @@ stages:
 
           - task: CopyFiles@2
             inputs:
-              SourceFolder: '$(Build.SourcesDirectory)/app/manifests'
+              SourceFolder: '$(Build.SourcesDirectory)/app/*'
               Contents: '*.yml'
               TargetFolder: '$(Build.ArtifactStagingDirectory)/manifests/'
 

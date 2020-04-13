@@ -54,7 +54,7 @@ stages:
               script: |
                 # Write your commands here
                 
-                cd '$(Build.SourcesDirectory)'
+                #cd '$(Build.SourcesDirectory)'
                 #ls
                 pwd
                 echo 'how are you'

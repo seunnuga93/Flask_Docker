@@ -47,11 +47,17 @@ stages:
         deploy:
           steps:
 
+          - task: PublishBuildArtifacts@1
+            inputs:
+              PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+              ArtifactName: 'drop'
+              publishLocation: 'Container'
+
           - task: KubernetesManifest@0
             inputs:
               action: 'deploy'
               kubernetesServiceConnection: 'nugakube'
               namespace: 'nugakube'
-              manifests: '$(Build.SourcesDirectory)/manifests/deployment.yml'
+              manifests: '$(Build.ArtifactStagingDirectory)/manifests/deployment.yml'
 
     

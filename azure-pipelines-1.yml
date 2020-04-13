@@ -55,4 +55,4 @@ stages:
             inputs:
               action: 'deploy'
               kubernetesServiceConnection: 'nugakube'
-              manifests: '$(Build.ArtifactStagingDirectory)/manifests/*'
+              manifests: '$(Build.ArtifactStagingDirectory)/manifests/deployment.yml'

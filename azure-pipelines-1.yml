@@ -46,12 +46,12 @@ stages:
       runOnce:
         deploy:
           steps:
-    
+
           - task: KubernetesManifest@0
             inputs:
               action: 'deploy'
               kubernetesServiceConnection: 'nugakube'
               namespace: 'nugakube'
-              manifests: '$(Build.SourcesDirectory)/manifests/*'
+              manifests: '$(Pipeline.Workspace)/manifests/*'
 
     

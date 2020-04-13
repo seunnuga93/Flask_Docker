@@ -50,5 +50,5 @@ stages:
             inputs:
               action: 'deploy'
               kubernetesServiceConnection: 'flaskenvironment-Flaskdemocluster-default-1586793974934'
-              manifests: '$(System.ArtifactsDirectory)/manifests/*'
+              manifests: '$(Build.SourcesDirectory)/app/manifests/*'
 

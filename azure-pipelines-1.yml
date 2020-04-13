@@ -10,7 +10,7 @@ resources:
 
 variables:
   tag: '$(Build.BuildId)'
-  imageName: 'nugalite/pipelines-flask-docker'
+  imageName: 'seunnuga93/pipelines-flask-docker'
 stages:
 - stage: Build
   displayName: Build image

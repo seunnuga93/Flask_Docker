@@ -33,3 +33,10 @@ stages:
         containerRegistry: 'DockerConnection'
         repository: $(imageName)
         command: 'push'
+    
+    - task: KubernetesManifest@0
+      inputs:
+        action: 'deploy'
+        kubernetesServiceConnection: 'nugakube'
+        namespace: 'nugakube'
+        manifests: '$(Build.SourcesDirectory)/app/manifests/*'

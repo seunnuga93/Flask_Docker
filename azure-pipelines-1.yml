@@ -34,9 +34,25 @@ stages:
         repository: $(imageName)
         command: 'push'
 
-    - task: CopyFiles@2
-      inputs:
-        SourceFolder: '$(Build.SourcesDirectory)/manifests/*'
-        Contents: '**'
-        TargetFolder: '$(Build.SourcesDirectory)'
-
+- stage: Deploy
+  displayName: Deploy image to Kubernetes
+  jobs:
+  - deployment: Deploy
+    dependsOn:
+    pool:
+      vmImage: 'ubuntu-latest'
+    environment: 'flaskenvironment'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+ 
+          - task: CopyFiles@2
+            inputs:
+              Contents: '*.yml'
+              TargetFolder: '$(Build.ArtifactStagingDirectory)'
+          - task: KubernetesManifest@0
+            inputs:
+              action: 'deploy'
+              kubernetesServiceConnection: 'nugakube'
+              manifests: '$(Build.ArtifactStagingDirectory)/manifests/*'

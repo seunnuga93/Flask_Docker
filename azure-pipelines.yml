@@ -50,9 +50,9 @@ stages:
 
           - task: CopyFiles@2
             inputs:
-              SourceFolder: '$(Build.SourcesDirectory)/app/manifests'
+              SourceFolder: '$(Build.SourcesDirectory)/app/*'
               Contents: '*.yml'
-              TargetFolder: 'sss'
+              TargetFolder: '$(Build.ArtifactStagingDirectory)/manifests/'
 
           - task: KubernetesManifest@0
             inputs:

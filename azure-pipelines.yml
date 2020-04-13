@@ -58,6 +58,7 @@ stages:
                 #ls
                 pwd
                 ls -l
+                cd ..
                 echo 'how are you'
               
 #          - task: KubernetesManifest@0

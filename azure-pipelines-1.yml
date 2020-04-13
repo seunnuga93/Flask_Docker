@@ -39,4 +39,4 @@ stages:
         action: 'deploy'
         kubernetesServiceConnection: 'nugakube'
         namespace: 'nugakube'
-        manifests: '$(Build.SourcesDirectory)/app/manifests/*'
+        manifests: '$(Build.SourcesDirectory)/manifests/*'

@@ -7,12 +7,12 @@ spec:
 selector:
       matchLabels:
         name: sawtooth-0
-  template:
-    metadata:
+template:
+  metadata:
       labels:
         app: "nugacluster"
-    spec:
-      containers:
+spec:
+    containers:
         - name: "nugacluster"
           image: "seunnuga93/pipelines-flask-docker"
           ports:

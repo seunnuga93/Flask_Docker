@@ -50,8 +50,11 @@ stages:
 
           - task: Bash@3
             inputs:
-              filePath: 'Agent.BuildDirectory'
-              arguments: 'ls'
+              targetType: 'inline'
+              script: |
+                # Write your commands here
+                
+                ls $(Build.ArtifactStagingDirectory)
               
 #          - task: KubernetesManifest@0
 #            inputs:

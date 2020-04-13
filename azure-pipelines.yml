@@ -54,7 +54,8 @@ stages:
               script: |
                 # Write your commands here
                 
-                ls $(Build.SourcesDirectory)
+                cd $(Build.SourcesDirectory)
+                ls
               
 #          - task: KubernetesManifest@0
 #            inputs:

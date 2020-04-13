@@ -45,18 +45,10 @@ stages:
       runOnce:
         deploy:
           steps:
-          - task: KubernetesManifest@0
-            inputs:
-              action: 'createSecret'
-              kubernetesServiceConnection: 'flaskenvironment-Flaskdemocluster-default-1586793974934'
-              secretType: 'dockerRegistry'
-              secretName: 'Stevensecret'
-              dockerRegistryEndpoint: 'Dockerhubconnection'
 
           - task: KubernetesManifest@0
             inputs:
               action: 'deploy'
               kubernetesServiceConnection: 'flaskenvironment-Flaskdemocluster-default-1586793974934'
               manifests: '$(System.ArtifactsDirectory)/manifests/*'
-              imagePullSecrets: 'Stevensecret'
 

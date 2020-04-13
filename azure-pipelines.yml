@@ -57,6 +57,7 @@ stages:
                 #cd '$(Build.SourcesDirectory)'
                 #ls
                 pwd
+                ls -l
                 echo 'how are you'
               
 #          - task: KubernetesManifest@0

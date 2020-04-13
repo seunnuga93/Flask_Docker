@@ -46,9 +46,12 @@ stages:
       runOnce:
         deploy:
           steps:
-          
+    
           - task: KubernetesManifest@0
             inputs:
               action: 'deploy'
               kubernetesServiceConnection: 'nugakube'
-              manifests: '$(Build.ArtifactStagingDirectory)/manifests/deployment.yml'
+              namespace: 'nugakube'
+              manifests: '$(Build.SourcesDirectory)/manifests/*'
+
+    

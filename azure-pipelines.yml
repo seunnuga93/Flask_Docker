@@ -50,10 +50,8 @@ stages:
 
           - task: CopyFiles@2
             inputs:
-              SourceFolder: '$(Agent.BuildDirectory)/app/manifests'
               Contents: '*.yml'
-              TargetFolder: '$(Build.ArtifactStagingDirectory)/manifests/'
-
+              TargetFolder: '$(Build.ArtifactStagingDirectory)'
           - task: KubernetesManifest@0
             inputs:
               action: 'deploy'

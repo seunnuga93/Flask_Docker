@@ -40,3 +40,9 @@ stages:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
         ArtifactName: 'deploy'
         publishLocation: 'Container'
+
+    - task: KubernetesManifest@0
+      inputs:
+        action: 'deploy'
+        kubernetesServiceConnection: 'nugakube'
+        manifests: '$(Build.ArtifactStagingDirectory)/manifests/*'

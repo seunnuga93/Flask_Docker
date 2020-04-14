@@ -38,8 +38,8 @@ stages:
       inputs:
         Contents: |
           Contents: |
-           **/manifests/deployment.yml
-           **/manifests/service.yml
+           **/manifests/deployment.yaml
+           **/manifests/service.yaml
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
     - task: PublishBuildArtifacts@1
       inputs:

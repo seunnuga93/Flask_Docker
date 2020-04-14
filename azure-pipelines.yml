@@ -30,7 +30,7 @@ stages:
 
     - task: Docker@2
       inputs:
-        containerRegistry: 'Dockerhubconnection'
+        containerRegistry: 'nugadocker'
         repository: $(imageName)
         command: 'push'
     

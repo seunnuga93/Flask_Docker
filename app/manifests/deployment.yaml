@@ -1,18 +1,18 @@
 apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: "flaskdemocluster"
+  name: flaskdemocluster
   labels: 
-    app: "flaskdemocluster"
+    app: flaskdemocluster
 spec:
   replicas: 2
   selector:
     matchLabels:
-      name: "flaskdemocluster"
+      app: flaskdemocluster
   template:
     metadata:
       labels:
-        app: "flaskdemocluster"
+        app: flaskdemocluster
     spec:
       containers:
         - name: "flaskdemoclustercont"

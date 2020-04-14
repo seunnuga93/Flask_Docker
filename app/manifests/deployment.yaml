@@ -4,13 +4,16 @@ metadata:
   name: "flaskdemocluster"
 spec:
   replicas: 2
+  selector:
+    matchLabels:
+      name: "flaskdemocluster"
   template:
     metadata:
       labels:
         app: "flaskdemocluster"
     spec:
       containers:
-        - name: "flaskdemocluster"
+        - name: "flaskdemoclusterCont"
           image: "stevendev/pipelines-flask-docker"
           ports:
           - containerPort: 80

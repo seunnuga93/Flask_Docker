@@ -28,6 +28,12 @@ stages:
         tags: |
           $(tag)
 
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'Dockerhubconnection'
+        repository: $(imageName)
+        command: 'push'
+    
     - task: CopyFiles@2
       inputs:
         Contents: |

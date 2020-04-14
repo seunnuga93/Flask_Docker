@@ -36,34 +36,40 @@ stages:
         repository: $(imageName)
         command: 'push'
 
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
 
-- stage: Deploy
-  displayName: Deploy image to Kubernetes
-  jobs:
-  - deployment: Deploy
-    dependsOn:
-    environment: 'flaskenvironment'
-    strategy:
-      runOnce:
-        deploy:
-          steps:
 
-          - task: Bash@3
-            inputs:
-              targetType: 'inline'
-              script: |
-                # Write your commands here
+# # - stage: Deploy
+# #   displayName: Deploy image to Kubernetes
+# #   jobs:
+# #   - deployment: Deploy
+# #     dependsOn:
+# #     environment: 'flaskenvironment'
+# #     strategy:
+# #       runOnce:
+# #         deploy:
+# #           steps:
+
+# #           - task: Bash@3
+# #             inputs:
+# #               targetType: 'inline'
+# #               script: |
+#                 # Write your commands here
                 
-                #cd '$(Build.SourcesDirectory)'
-                #ls
-                pwd
-                ls -l
-                cd ..
-                echo 'how are you'
+#                 #cd '$(Build.SourcesDirectory)'
+#                 #ls
+#                 pwd
+#                 ls -l
+#                 cd ..
+#                 echo 'how are you'
               
-#          - task: KubernetesManifest@0
-#            inputs:
-#              action: 'deploy'
-#              kubernetesServiceConnection: 'flaskenvironment-Flaskdemocluster-default-1586793974934'
-#              manifests: '$(Build.ArtifactStagingDirectory)/manifests/*'
+# #          - task: KubernetesManifest@0
+# #            inputs:
+# #              action: 'deploy'
+# #              kubernetesServiceConnection: 'flaskenvironment-Flaskdemocluster-default-1586793974934'
+# #              manifests: '$(Build.ArtifactStagingDirectory)/manifests/*'
 

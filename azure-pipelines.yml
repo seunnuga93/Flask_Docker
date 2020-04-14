@@ -32,7 +32,7 @@ stages:
       inputs:
         Contents: |
           **/manifests/deployment.yml
-           **/manifests/service.yml
+          **/manifests/service.yml
         TargetFolder: '''$(Build.ArtifactStagingDirectory)'''
 
     - task: PublishBuildArtifacts@1
@@ -45,4 +45,4 @@ stages:
       inputs:
         action: 'deploy'
         kubernetesServiceConnection: 'nugakube'
-        manifests: '$(Build.ArtifactStagingDirectory)/manifests/*'
+        manifests: '**/manifests/deployment.yml'

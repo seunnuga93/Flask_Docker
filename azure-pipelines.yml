@@ -38,9 +38,11 @@ stages:
           
           pwd
           
-          cd app
+          cd app/manifests
           
           ls -l
+
+          pwd
 
 
     - task: Docker@2

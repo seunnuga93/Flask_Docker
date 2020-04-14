@@ -1,16 +1,17 @@
 # Docker
 # Build a Docker image 
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
-
+ 
 trigger:
 - master
-
+ 
 resources:
 - repo: self
-
+ 
 variables:
   tag: '$(Build.BuildId)'
-
+  imageName: 'seunnuga93/pipelines-flask-docker'
+  
 stages:
 - stage: Build
   displayName: Build image
@@ -24,31 +25,27 @@ stages:
       displayName: Build an image
       inputs:
         command: build
+        repository: $(imageName)
         dockerfile: '$(Build.SourcesDirectory)/app/Dockerfile'
         tags: |
           $(tag)
-
+    
     - task: Docker@2
       inputs:
         containerRegistry: 'nugadocker'
         repository: $(imageName)
         command: 'push'
-    
+ 
     - task: CopyFiles@2
       inputs:
         Contents: |
-          **/manifests/deployment.yml
-          **/manifests/service.yml
-        TargetFolder: '''$(Build.ArtifactStagingDirectory)'''
-
+          Contents: |
+           **/manifests/deployment.yaml
+           **/manifests/service.yaml
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'
+        
     - task: PublishBuildArtifacts@1
       inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: 'deploy'
+        ArtifactName: 'drop'
         publishLocation: 'Container'
-
-    - task: KubernetesManifest@0
-      inputs:
-        action: 'deploy'
-        kubernetesServiceConnection: 'nugakube'
-        manifests: '**/manifests/deployment.yml'

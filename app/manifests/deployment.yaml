@@ -1,7 +1,7 @@
 apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: "flaskdemoclusterDeployment"
+  name: "flaskdemoclusterdeployment"
   labels: 
     app: "flaskdemocluster"
 spec:
@@ -15,7 +15,7 @@ spec:
         app: "flaskdemocluster"
     spec:
       containers:
-        - name: "flaskdemoclusterCont"
+        - name: "flaskdemoclustercont"
           image: "stevendev/pipelines-flask-docker"
           ports:
           - containerPort: 80

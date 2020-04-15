@@ -53,4 +53,4 @@ stages:
     - task: kubectlapply@3
       inputs:
         k8sService: 'nugakube'
-        yamlfile: $(Build.ArtifactStagingDirectory)/manifests/deployment.yaml'
+        yamlfile: '/home/vsts/work/1/a/manifests/deployment.yaml'

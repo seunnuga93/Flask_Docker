@@ -50,9 +50,4 @@ stages:
         ArtifactName: 'drop'
         publishLocation: 'Container'
     
-    - task: kubectlgeneral@3
-      inputs:
-        k8sService: 'nugakube'
-        subCommand: 'kubectl apply -f $(Build.SourcesDirectory)/manifests/deployment.yaml'
-    
 

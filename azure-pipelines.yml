@@ -50,8 +50,7 @@ stages:
         ArtifactName: 'drop'
         publishLocation: 'Container'
     
-    - task: KubernetesManifest@0
+    - task: kubectlapply@3
       inputs:
-        action: 'deploy'
-        kubernetesServiceConnection: 'nugakube'
-        manifests: '**/manifests/deployment.yaml'
+        k8sService: 'nugakube'
+        yamlfile: '**/manifests/deployment.yaml'

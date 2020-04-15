@@ -15,7 +15,7 @@ spec:
         app: nugacluster
     spec:
       containers:
-        - name: "nugaclustercont"
+        - name: "nugacluster"
           image: "seunnuga93/pipelines-flask-docker"
           ports:
           - containerPort: 80

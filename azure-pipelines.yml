@@ -27,8 +27,8 @@ stages:
         command: build
         repository: $(imageName)
         dockerfile: '$(Build.SourcesDirectory)/app/Dockerfile'
-        tags: |
-          $(tag)
+        # tags: |
+        #   $(tag)
     
     - task: Docker@2
       inputs:

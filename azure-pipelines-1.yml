@@ -1,0 +1,63 @@
+# Docker
+# Build a Docker image 
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+trigger:
+- master
+
+resources:
+- repo: self
+
+variables:
+  tag: '$(Build.BuildId)'
+  imageName: 'seunnuga93/pipelines-flask-docker'
+stages:
+- stage: Build
+  displayName: Build image
+  jobs:  
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: Docker@2
+      displayName: Build an image
+      inputs:
+        repository: $(imageName)
+        command: build
+        dockerfile: '$(Build.SourcesDirectory)/app/Dockerfile'
+        tags: |
+          $(tag)
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'DockerConnection'
+        repository: $(imageName)
+        command: 'push'
+
+- stage: Deploy
+  displayName: Deploy image to Kubernetes
+  jobs:
+  - deployment: Deploy
+    dependsOn:
+    pool:
+      vmImage: 'ubuntu-latest'
+    environment: 'flaskenvironment'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+
+          - task: PublishBuildArtifacts@1
+            inputs:
+              PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+              ArtifactName: 'drop'
+              publishLocation: 'Container'
+
+          - task: KubernetesManifest@0
+            inputs:
+              action: 'deploy'
+              kubernetesServiceConnection: 'nugakube'
+              namespace: 'nugakube'
+              manifests: '$(Build.ArtifactStagingDirectory)/manifests/deployment.yml'
+
+    

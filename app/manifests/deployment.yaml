@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: "flaskdemoclustercont"
-          image: "stevendev/pipelines-flask-docker:187"
+          image: "seunnuga93/pipelines-flask-docker"
           ports:
           - containerPort: 80

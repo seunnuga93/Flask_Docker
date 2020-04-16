@@ -1,21 +1,21 @@
 apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: nugacluster
+  name: flaskdemocluster
   labels: 
-    app: nugacluster
+    app: flaskdemocluster
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: nugacluster
+      app: flaskdemocluster
   template:
     metadata:
       labels:
-        app: nugacluster
+        app: flaskdemocluster
     spec:
       containers:
-        - name: "nugacluster"
+        - name: "flaskdemoclustercont"
           image: "seunnuga93/pipelines-flask-docker"
           ports:
           - containerPort: 80

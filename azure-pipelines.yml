@@ -21,6 +21,15 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
+ 
+    - task: AzurePowerShell@5
+      inputs:
+        azureSubscription: 'Visual Studio Enterprise(ec593a48-6125-4a71-984e-3a8ced1a59ac)'
+        ScriptType: 'InlineScript'
+        #Inline: 'Get-AzADServicePrincipal'
+        Inline: 'Get-AzResources'
+        preferredAzurePowerShellVersion: '3.1.0'
+
     - task: Docker@2
       displayName: Build an image
       inputs:
@@ -29,12 +38,6 @@ stages:
         dockerfile: '$(Build.SourcesDirectory)/app/Dockerfile'
         tags: |
           $(tag)
-    - task: AzurePowerShell@5
-      inputs:
-        azureSubscription: 'Visual Studio Enterprise(ec593a48-6125-4a71-984e-3a8ced1a59ac)'
-        ScriptType: 'InlineScript'
-        Inline: 'Get-AzADServicePrincipal'
-        preferredAzurePowerShellVersion: '3.1.0'
     
     - task: Docker@2
       inputs:

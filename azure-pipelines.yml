@@ -28,7 +28,7 @@ stages:
         ScriptType: 'InlineScript'
         #Inline: 'Get-AzADServicePrincipal'
         Inline: 'Get-AzResources'
-        preferredAzurePowerShellVersion: '3.1.0'
+        preferredAzurePowerShellVersion: '5.1.1'
 
     - task: Docker@2
       displayName: Build an image
